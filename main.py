@@ -9,12 +9,14 @@ from routes.auth import auth_router
 from routes.recommendation import recommendation_router
 from routes.customization import customization_router
 from routes.order import order_router
+from routes.product import product_router
 
 app = FastAPI() 
 app.include_router(auth_router)
 app.include_router(recommendation_router)
 app.include_router(customization_router)
 app.include_router(order_router)
+app.include_router(product_router)
 
 origins = ["*"]
 
