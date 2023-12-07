@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status 
 import requests
-from auth import *
+from routes.auth import *
 
 # Get New Token
 def get_new_token():
@@ -25,13 +25,12 @@ def authenticate_request(url, payload):
         r = requests.get(url, headers=headers, data=payload)
     return r
 
-customization_router = APIRouter(
-    tags=['Customizations']
-)
+customization_router = APIRouter(tags=['Customizations'])
 
 customization = {}
 
+# GET CUSTOMIZATION INSPIRATION
 @customization_router.get('/customization')
-async def customization_recommendation(font: str, color: str, size: str, product_type: str, current_user: User = Depends(get_current_active_user)):
+async def customization_inspiration(font: str, color: str, size: str, product_type: str, current_user: User = Depends(get_current_active_user)):
     response = authenticate_request(f'https://customizedclothintegrated.salmonbeach-997612a6.australiaeast.azurecontainerapps.io/customizationRequests/{font}/{color}/{size}/{product_type}', {})
     return response.json()
