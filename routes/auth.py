@@ -9,7 +9,7 @@ import json
 
 SECRET_KEY = "9ada8cc76f42770d493eea65201cd3d07cf88215328ea6c59bb417739360815c"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 99999
 
 with open("data/users.json", "r") as json_file:
     users = json.load(json_file)
